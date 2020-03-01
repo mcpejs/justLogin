@@ -1,9 +1,8 @@
 {
-  "name": "onlyLogin",
+  "name": "justLogin",
   "version": "1.0.0",
-  "description": "",
+  "description": "nodeJs로 구현해보는 ",
   "main": "app.js",
-  "keywords": [],
   "author": "mcpejs",
   "license": "ISC",
   "dependencies": {
