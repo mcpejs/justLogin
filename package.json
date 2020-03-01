@@ -1,7 +1,7 @@
 {
   "name": "justLogin",
   "version": "1.0.0",
-  "description": "nodeJs로 구현해보는 ",
+  "description": "nodeJs로 구현해보는 로그인",
   "main": "app.js",
   "author": "mcpejs",
   "license": "ISC",
