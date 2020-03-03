@@ -26,4 +26,8 @@ router.get('/register',function(req,res){
     res.sendFile(path.resolve('./views/register.html'))
 })
 
+router.get('/test',function(req,res){
+    res.sendFile(path.resolve('./views/test.html'))
+})
+
 module.exports=router

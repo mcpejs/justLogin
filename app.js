@@ -8,8 +8,9 @@ app.use(session({
     saveUninitialized:true,
 }))
 
-//
+// public 폴더를 /public으로 접근시킴
 app.use('/public',express.static('public'))
+
 // post body 사용
 app.use(express.json());
 app.use(express.urlencoded({extended:false}))

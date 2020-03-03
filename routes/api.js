@@ -3,6 +3,9 @@ const path=require('path')
 const router=express.Router()
 let db=require('../db/db')
 
+router.post('/test',function(req,res){
+    res.send(req.body)
+})
 router.post('/login',function(req,res){
     
     if(ishaveEmpty([req.body.nickname,req.body.password])){
@@ -20,6 +23,8 @@ router.post('/login',function(req,res){
             // 쿼리문에 오류가 있다면
             res.status(401)
             res.send('<script type="text/javascript">alert("중간과정에 오류가 있었습니다.");history.back();</script>')
+            console.log(err);
+            
         } else {
             // 데이터가 없다면 - 해당하는 닉네임이 없을떄
             if(!data[0]){
@@ -34,7 +39,7 @@ router.post('/login',function(req,res){
                     req.session.isLogin=true
                     req.session.nickname=bodynickname
                     res.status(200)
-                    res.send('<script type="text/javascript">alert("로그인되었습니다.");location.href='/'</script>')
+                    res.send('<script type="text/javascript">alert("로그인되었습니다.");location.href="/"</script>')
                 } else {
                     // 비밀번호가 틀렸을떄
                     res.status(401)
@@ -54,7 +59,7 @@ router.post('/register',function(req,res){
     
     let bodynickname=req.body.nickname
     let bodypassword=req.body.password
-
+    
     let account={name:bodynickname,password:bodypassword}
     let createaccountquery='insert into accounts set ?'
     db.query(createaccountquery,account,function(err,data){
@@ -64,8 +69,7 @@ router.post('/register',function(req,res){
             res.status(401)
             res.send('<script type="text/javascript">alert("중간과정에 오류가 있었습니다.");history.back();</script>')
         } else {
-            res.status(200)
-            res.send('<script type="text/javascript">alert("계정이 성공적으로 생성되었습니다.");.location.href='/'</script>')
+            res.send('<script type="text/javascript">alert("계정이 성공적으로 생성되었습니다.");location.href="/"</script>')
         }
     })
 })
