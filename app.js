@@ -8,9 +8,12 @@ app.use(session({
     saveUninitialized:true,
 }))
 
+//
+app.use('/public',express.static('public'))
 // post body 사용
 app.use(express.json());
 app.use(express.urlencoded({extended:false}))
+
 // ejs 사용
 app.set('view engine', 'ejs');
 app.set('views', 'views');
