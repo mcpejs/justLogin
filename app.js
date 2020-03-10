@@ -1,30 +1,32 @@
 const express = require('express');
 const session = require('express-session');
-const app=express()
+const app = express()
 
 app.use(session({
-    secret:'anysecretkey',
-    resave:false,
-    saveUninitialized:true,
+    secret: 'anysecretkey',
+    resave: false,
+    saveUninitialized: true,
 }))
 
 // public 폴더를 /public으로 접근시킴
-app.use('/public',express.static('public'))
+app.use('/public', express.static('public'))
 
 // post body 사용
 app.use(express.json());
-app.use(express.urlencoded({extended:false}))
+app.use(express.urlencoded({
+    extended: false
+}))
 
 // ejs 사용
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
 // 프론트엔드 페이지 라우터
-let indexRouter=require('./routes/index')
-app.use('/',indexRouter)
+let indexRouter = require('./routes/index')
+app.use('/', indexRouter)
 
 // 백엔드 api 라우터
-let apiRouter=require('./routes/api')
-app.use('/api',apiRouter)
+let apiRouter = require('./routes/api')
+app.use('/api', apiRouter)
 
 app.listen(3000)
